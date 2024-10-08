@@ -43,3 +43,6 @@ gcloud init --console-only
 GCP에 사용중인 프로젝트를 선택하거나, 새로 프로젝트를 만듭니다.
 이후 default로 사용할 리전을 선택해주시면 됩니다.
 ```
+
+## GCP 사용 방법
+* [GCP 사용 방법](GoogleCloudStart.md)

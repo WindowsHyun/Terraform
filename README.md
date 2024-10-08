@@ -56,4 +56,4 @@ terraform -v
 
 ## GCP Terraform 설정
 * [GCP 설정 방법](GoogleCloudInit.md)
-* [GCP 사용 방법](GCP.md)
+* [GCP 사용 방법](GoogleCloudStart.md)
