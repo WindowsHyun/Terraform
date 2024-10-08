@@ -14,7 +14,7 @@ terraform {
 # 변수 정의 
 variable "project_id" { 
   type    = string 
-  default = "stage-411000" 
+  default = "stage" 
 } 
 
 variable "zone" { 
