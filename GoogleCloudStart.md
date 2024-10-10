@@ -1,5 +1,18 @@
 ## GCP 사용 방법
-### 1. tf 파일 작성
+
+### 1. 별도의 스냅샷이 있는경우 이미지 처리 작업
+```
+gcloud compute images create source-name \
+--source-snapshot=source-snapshot-name \
+--project=project-id
+```
+- source-name : 저장할 이미지 이름
+  - ex) jenkins-slave-base-image
+- source-snapshot-name : 스냅샷 이름
+  - ex) jenkins-slave-server-latest
+- project-id : GCP 프로젝트명
+
+### 2. main.tf 파일 작성
 ```
 # Google Cloud Provider 설정 
 terraform { 
@@ -48,7 +61,19 @@ resource "google_compute_instance" "default" {
   network_interface { 
     network = "default" 
     access_config { 
+      // 외부IP 설정시 해당 구문을 넣어야 합니다.
     } 
   } 
-} 
+}
+
+firewall {
+    name    = "allow-http"
+    network = "default"
+    allow {
+      protocol = "tcp"
+      ports    = ["8080"]
+    }
+    source_ranges = ["0.0.0.0/0"]
+    target_tags = ["http-server"]
+}
 ```
